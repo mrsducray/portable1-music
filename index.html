@@ -9,20 +9,31 @@ body{
     max-width: 700px;
     margin: 40px auto;
     padding: 20px;
+    background-color: #f9f9f9;
 }
 
 h1{
     text-align:center;
+    color: #333;
+}
+
+.audio-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 audio{
     width:100%;
+    margin-bottom: 15px;
 }
 
-button{
-    padding:10px 20px;
-    font-size:16px;
-    cursor:pointer;
+p{
+    font-weight: bold;
+    color: #555;
+    margin: 0;
 }
 </style>
 </head>
@@ -31,12 +42,14 @@ button{
 
 <h1>🎵 Classroom Music</h1>
 
-<audio controls>
-    <source src="https://1drv.ms/u/c/e393373c5e71301e/IQDKAatHIWayTZrt1T8dBcTdAb_L3Yu0et7DP4t0UElMdLY?e=gwuOz7">
-    Your browser does not support audio.
-</audio>
-
-<p>03. With or without U - Cellar 55.mp3</p>
+<div class="audio-container">
+    <!-- Updated source link to force direct streaming download -->
+    <audio controls>
+        <source src="https://1drv.ms" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+    <p>03. With or without U - Cellar 55.mp3</p>
+</div>
 
 </body>
 </html>
