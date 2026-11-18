@@ -1,156 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portable 1 Music Playlist </title>
+<title>Portable 1 Music Playlist</title>
 
 <style>
 
-body {
+body{
     font-family: Arial, sans-serif;
     max-width: 900px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f5f7fa;
+    background:#f5f7fa;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
+h1{
+    text-align:center;
 }
 
-.controls {
-    text-align: center;
-    margin-bottom: 20px;
+#currentSong{
+    text-align:center;
+    color:#444;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 0 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-    
-audio {
-    width: 100%;
-    margin-bottom: 20px;
+audio{
+    width:100%;
+    margin-bottom:20px;
 }
 
-.song {
-    background: white;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    transition:0.2s;
+.controls{
+    text-align:center;
+    margin-bottom:20px;
 }
 
-.song:hover {
-    background: #e8f0fe;
+button{
+    padding:10px 20px;
+    margin:5px;
+    cursor:pointer;
 }
 
-.active {
-    background: #cfe2ff;
-    border-color: #4a90e2;
+.song{
+    background:white;
+    padding:12px;
+    margin:6px 0;
+    border-radius:8px;
+    border:1px solid #ddd;
+    cursor:pointer;
+}
+
+.song:hover{
+    background:#e8f0fe;
+}
+
+.active{
+    background:#cfe2ff;
+    border:2px solid #4285f4;
     font-weight:bold;
 }
 
-.instructions {
-    text-align: center;
-    background: #fff8e6;
-    padding: 10px;
-    border-left: 4px solid #ffcc00;
-    margin-bottom: 20px;
-}
 </style>
 </head>
 
 <body>
 
-<h1>🎵 Portable 1 Music </h1>
+<h1>🎵 Portable 1 Music</h1>
 
-<div class="instructions">
-Click any song below to play it.
-</div>
+<h3 id="currentSong">
+Track 1
+</h3>
 
-<audio 
-    id="player" 
+<audio
+    id="player"
     controls
-    preload="metadata">    
+    controlsList="nodownload"
+    preload="metadata">
 </audio>
 
 <div class="controls">
-    <button onclick="previousSong()">⏮ Previous</button>
-    <button onclick="nextSong()">⏭ Next</button>
+
+    <button onclick="previousSong()">
+        ⏮ Previous
+    </button>
+
+    <button onclick="shuffleSong()">
+        🔀 Shuffle
+    </button>
+
+    <button onclick="nextSong()">
+        ⏭ Next
+    </button>
+
 </div>
-    
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/hyvotznyct4je6m7qh3al/Brandy-_-Monica-The-Boy-Is-Mine.mp3?rlkey=ftuci9w1lisl2cb4sklvler1b&st=xejk0bjw&raw=1')">
+
+<div class="song" onclick="playSong(0)">
 Brandy & Monica - The Boy Is Mine
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/gpgkyj5t5cyvdg69ybig6/Bruno-Mars-I-Just-Might.mp3?rlkey=j97rnpam3y7kt3oafp99hqpbl&st=lpo5p01k&raw=1')">
+<div class="song" onclick="playSong(1)">
 Bruno Mars - I Just Might
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/fqk9e5rgmv8qfo3dwnk97/BTS-Butter.mp3?rlkey=wtl0bcq5qwdos761s4dtf2e6i&st=dn5xbjyb&raw=1')">
+<div class="song" onclick="playSong(2)">
 BTS - Butter
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/ci4hb2nmg6bk47wn19nuw/CeCe-Winans-Goodness-of-God.mp3?rlkey=a59spnkg46ovnaxv19wivjk64&st=3rxc4tic&raw=1')">
+<div class="song" onclick="playSong(3)">
 CeCe Winans - Goodness of God
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/xr42ges7evs3o3xhsthhd/Chris-Brown-Residuals-Official-Video.mp3?rlkey=uncukeyobabhxw1pmtzai7bn9&st=y4kdtq09&raw=1')">
+<div class="song" onclick="playSong(4)">
 Chris Brown - Residuals
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/kyzsw83je4p0aol0fjc71/Forrest-Frank-OKAY.mp3?rlkey=3bfs4zkhwmhuby777zj5fsxma&st=yokxhorx&raw=1')">
-Forrest Frank - Okay
+<div class="song" onclick="playSong(5)">
+Forrest Frank - OKAY
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/jvq96jw4l78fvqdzfqpy8/GIV-ON-Heartbreak-Anniversary.mp3?rlkey=uvl6la1cnhrc12c4wczvs8yso&st=z84y7nc2&raw=1')">
+<div class="song" onclick="playSong(6)">
 GIVĒON - Heartbreak Anniversary
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/h0tltqxb0xzm5zuh26829/Harry-Styles-American-Girls.mp3?rlkey=js1yh5ztjh3k8dn8fwr75gkrk&st=v816xtkc&raw=1')">
+<div class="song" onclick="playSong(7)">
 Harry Styles - American Girls
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/fmlwg997y9fmw1ls7266y/Hearts2Hearts-Lemon-Tang.mp3?rlkey=au1cx3vgxk99zabvx17qiac20&st=6khg3cx9&raw=1')">
+<div class="song" onclick="playSong(8)">
 Hearts2Hearts - Lemon Tang
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/anngwj995jnsjr43vq9m2/Keri-Hilson-Pretty-Girl-Rock.mp3?rlkey=p0w2q4zpuo452m93r4on2corh&st=g0w4yep2&raw=1')">
+<div class="song" onclick="playSong(9)">
 Keri Hilson - Pretty Girl Rock
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/omadxcsbrowmy9jdec3lq/Maheva-Ne-m-oublie-pas.mp3?rlkey=3mdcfkdavigfrn5rzftj8481h&st=1z8867ul&raw=1')">
+<div class="song" onclick="playSong(10)">
 Maheva - Ne m'oublie pas
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/z0nvl5z3cmbue3nzkvsaa/Michelle-Khare-Tell-Me-I-Can-t.mp3?rlkey=tu0zehc09hu9dhua1ogmwsegd&st=nlx6r2tm&raw=1')">
+<div class="song" onclick="playSong(11)">
 Michelle Khare - Tell Me I Can't
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/v4vi5e660rlz3b4spp4gq/Post-Malone-_-Swae-Lee-Sunflower.mp3?rlkey=nf55wr6uek4qxx80mx52eeiai&st=qxdc121y&raw=1')">
+<div class="song" onclick="playSong(12)">
 Post Malone & Swae Lee - Sunflower
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/oibsc0386xakq0xawzbd6/Song-For-Wemmbu-PLAYFUL-MASSACRE.mp3?rlkey=i18fti4t5cqujg1ems5so4to4&st=549c9oav&raw=1')">
-Song For Wemmbu - Playful Massacre
+<div class="song" onclick="playSong(13)">
+Song For Wemmbu - PLAYFUL MASSACRE
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/7baarcs1w6cxczj0jb17i/Taylor-Swift-Patient-Zero.mp3?rlkey=e2jf6bx0iomg9sjswlwm8y0oa&st=v3ak2uep&raw=1')">
+<div class="song" onclick="playSong(14)">
 Taylor Swift - Patient Zero
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/p64236tc5shsni43xov5g/TKANDZ-NOW-OR-NEVER.mp3?rlkey=ghoxz5bywvcb0w9dr7gq90jtj&st=19qihw6y&raw=1')">
-Tkandz - Now or never
+<div class="song" onclick="playSong(15)">
+TKANDZ - NOW OR NEVER
 </div>
 
-<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/0lqwhzlbnf3jvaxo2dscc/Vance-Joy-Riptide.mp3?rlkey=z142zp9xsi0e9tkt557l93mqn&st=h9qorm3r&raw=1')">
+<div class="song" onclick="playSong(16)">
 Vance Joy - Riptide
 </div>
 
@@ -159,22 +166,39 @@ Vance Joy - Riptide
 const playlist = [
 
 "https://www.dropbox.com/scl/fi/hyvotznyct4je6m7qh3al/Brandy-_-Monica-The-Boy-Is-Mine.mp3?rlkey=ftuci9w1lisl2cb4sklvler1b&st=xejk0bjw&raw=1",
+
 "https://www.dropbox.com/scl/fi/gpgkyj5t5cyvdg69ybig6/Bruno-Mars-I-Just-Might.mp3?rlkey=j97rnpam3y7kt3oafp99hqpbl&st=lpo5p01k&raw=1",
+
 "https://www.dropbox.com/scl/fi/fqk9e5rgmv8qfo3dwnk97/BTS-Butter.mp3?rlkey=wtl0bcq5qwdos761s4dtf2e6i&st=dn5xbjyb&raw=1",
+
 "https://www.dropbox.com/scl/fi/ci4hb2nmg6bk47wn19nuw/CeCe-Winans-Goodness-of-God.mp3?rlkey=a59spnkg46ovnaxv19wivjk64&st=3rxc4tic&raw=1",
+
 "https://www.dropbox.com/scl/fi/xr42ges7evs3o3xhsthhd/Chris-Brown-Residuals-Official-Video.mp3?rlkey=uncukeyobabhxw1pmtzai7bn9&st=y4kdtq09&raw=1",
+
+"https://www.dropbox.com/scl/fi/kyzsw83je4p0aol0fjc71/Forrest-Frank-OKAY.mp3?rlkey=3bfs4zkhwmhuby777zj5fsxma&st=yokxhorx&raw=1",
+
 "https://www.dropbox.com/scl/fi/jvq96jw4l78fvqdzfqpy8/GIV-ON-Heartbreak-Anniversary.mp3?rlkey=uvl6la1cnhrc12c4wczvs8yso&st=z84y7nc2&raw=1",
+
 "https://www.dropbox.com/scl/fi/h0tltqxb0xzm5zuh26829/Harry-Styles-American-Girls.mp3?rlkey=js1yh5ztjh3k8dn8fwr75gkrk&st=v816xtkc&raw=1",
+
 "https://www.dropbox.com/scl/fi/fmlwg997y9fmw1ls7266y/Hearts2Hearts-Lemon-Tang.mp3?rlkey=au1cx3vgxk99zabvx17qiac20&st=6khg3cx9&raw=1",
+
 "https://www.dropbox.com/scl/fi/anngwj995jnsjr43vq9m2/Keri-Hilson-Pretty-Girl-Rock.mp3?rlkey=p0w2q4zpuo452m93r4on2corh&st=g0w4yep2&raw=1",
+
 "https://www.dropbox.com/scl/fi/omadxcsbrowmy9jdec3lq/Maheva-Ne-m-oublie-pas.mp3?rlkey=3mdcfkdavigfrn5rzftj8481h&st=1z8867ul&raw=1",
+
 "https://www.dropbox.com/scl/fi/z0nvl5z3cmbue3nzkvsaa/Michelle-Khare-Tell-Me-I-Can-t.mp3?rlkey=tu0zehc09hu9dhua1ogmwsegd&st=nlx6r2tm&raw=1",
+
 "https://www.dropbox.com/scl/fi/v4vi5e660rlz3b4spp4gq/Post-Malone-_-Swae-Lee-Sunflower.mp3?rlkey=nf55wr6uek4qxx80mx52eeiai&st=qxdc121y&raw=1",
+
 "https://www.dropbox.com/scl/fi/oibsc0386xakq0xawzbd6/Song-For-Wemmbu-PLAYFUL-MASSACRE.mp3?rlkey=i18fti4t5cqujg1ems5so4to4&st=549c9oav&raw=1",
+
 "https://www.dropbox.com/scl/fi/7baarcs1w6cxczj0jb17i/Taylor-Swift-Patient-Zero.mp3?rlkey=e2jf6bx0iomg9sjswlwm8y0oa&st=v3ak2uep&raw=1",
+
 "https://www.dropbox.com/scl/fi/p64236tc5shsni43xov5g/TKANDZ-NOW-OR-NEVER.mp3?rlkey=ghoxz5bywvcb0w9dr7gq90jtj&st=19qihw6y&raw=1",
-"https://www.dropbox.com/scl/fi/0lqwhzlbnf3jvaxo2dscc/Vance-Joy-Riptide.mp3?rlkey=z142zp9xsi0e9tkt557l93mqn&st=h9qorm3r&raw=1",
-    
+
+"https://www.dropbox.com/scl/fi/0lqwhzlbnf3jvaxo2dscc/Vance-Joy-Riptide.mp3?rlkey=z142zp9xsi0e9tkt557l93mqn&st=h9qorm3r&raw=1"
+
 ];
 
 const player = document.getElementById("player");
@@ -182,31 +206,46 @@ const songs = document.querySelectorAll(".song");
 
 let currentTrack = 0;
 
+player.volume =
+    localStorage.getItem("playerVolume") || 0.5;
+
+player.addEventListener("volumechange",()=>{
+
+    localStorage.setItem(
+        "playerVolume",
+        player.volume
+    );
+
+});
+
 function highlightSong(index){
 
-    songs.forEach(song => {
+    songs.forEach(song=>{
         song.classList.remove("active");
     });
 
     songs[index].classList.add("active");
-}
 
-function loadSong(index){
-
-    currentTrack = index;
-
-    player.src = playlist[currentTrack];
-
-    highlightSong(currentTrack);
+    document.getElementById("currentSong")
+    .textContent =
+    `Track ${index + 1} of ${songs.length}: ` +
+    songs[index].textContent;
 }
 
 function playSong(index){
 
-    loadSong(index);
+    currentTrack = index;
 
-    player.play().catch(error => {
-        console.log("Playback issue:", error);
-    });
+    player.pause();
+
+    player.src = playlist[index];
+
+    player.load();
+
+    highlightSong(index);
+
+    player.play()
+    .catch(err=>console.log(err));
 }
 
 function nextSong(){
@@ -231,16 +270,37 @@ function previousSong(){
     playSong(currentTrack);
 }
 
-player.addEventListener("ended", () => {
+function shuffleSong(){
+
+    let randomTrack;
+
+    do{
+
+        randomTrack =
+            Math.floor(
+                Math.random()*playlist.length
+            );
+
+    } while(randomTrack === currentTrack);
+
+    playSong(randomTrack);
+}
+
+player.addEventListener("ended",()=>{
 
     nextSong();
 
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("load",()=>{
 
-    loadSong(0);
+    player.src = playlist[0];
+
+    highlightSong(0);
 
 });
 
 </script>
+
+</body>
+</html>
