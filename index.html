@@ -171,61 +171,89 @@ const playlist = [
 "https://www.dropbox.com/scl/fi/0lqwhzlbnf3jvaxo2dscc/Vance-Joy-Riptide.mp3?rlkey=z142zp9xsi0e9tkt557l93mqn&st=h9qorm3r&raw=1",
     
 ];
-
+    
 let currentTrack = 0;
 
 const player = document.getElementById("player");
 const songs = document.querySelectorAll(".song");
 
-function highlightTrack(index) {
+function highlightSong(index){
 
-    songs.forEach(song => {
+    songs.forEach(song=>{
         song.classList.remove("active");
     });
 
     songs[index].classList.add("active");
+
+    songs[index].scrollIntoView({
+        behavior:"smooth",
+        block:"nearest"
+    });
 }
 
-function playSong(index) {
+function playSong(index){
 
     currentTrack = index;
 
-    player.src = playlist[index];
-
-    player.play();
-
-    highlightTrack(index);
-}
-
-function nextSong() {
-
-    currentTrack = (currentTrack + 1) % playlist.length;
-
-    playSong(currentTrack);
-}
-
-function previousSong() {
-
-    currentTrack =
-        (currentTrack - 1 + playlist.length) % playlist.length;
-
-    playSong(currentTrack);
-}
-
-player.addEventListener("ended", function() {
-
-    currentTrack++;
-
-    if (currentTrack >= playlist.length) {
-
-        currentTrack = 0;  // restart playlist
-    }
+    player.pause();
 
     player.src = playlist[currentTrack];
 
-    player.play();
+    player.load();
 
-    highlightTrack(currentTrack);
+    highlightSong(currentTrack);
+
+    const playPromise = player.play();
+
+    if(playPromise !== undefined){
+
+        playPromise.catch(error=>{
+            console.log(error);
+        });
+
+    }
+}
+
+function nextSong(){
+
+    currentTrack++;
+
+    if(currentTrack >= playlist.length){
+
+        currentTrack = 0;
+    }
+
+    playSong(currentTrack);
+}
+
+function previousSong(){
+
+    currentTrack--;
+
+    if(currentTrack < 0){
+
+        currentTrack = playlist.length - 1;
+    }
+
+    playSong(currentTrack);
+}
+
+player.addEventListener("ended", ()=>{
+
+    nextSong();
+
+});
+
+player.addEventListener("error",(e)=>{
+
+    console.log("Audio Error",e);
+
+});
+
+window.addEventListener("load",()=>{
+
+    highlightSong(0);
+
 });
 
 </script>
