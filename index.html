@@ -1,33 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Music Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Music</title>
 
 <style>
 body {
     font-family: Arial, sans-serif;
-    max-width: 700px;
-    margin: 40px auto;
+    max-width: 900px;
+    margin: 20px auto;
     padding: 20px;
+    background-color: #f5f7fa;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
 }
 
 audio {
     width: 100%;
+    margin-bottom: 20px;
+}
+
+.song {
+    background: white;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.song:hover {
+    background: #e8f0fe;
+}
+
+.active {
+    background: #cfe2ff;
+    border-color: #4a90e2;
+}
+
+.instructions {
+    background: #fff8e6;
+    padding: 10px;
+    border-left: 4px solid #ffcc00;
+    margin-bottom: 20px;
 }
 </style>
-
 </head>
+
 <body>
 
-<h1>🎵 Audio Test</h1>
+<h1>🎵 Classroom Music</h1>
 
-<p>If this song plays, the HTML page is working correctly.</p>
+<div class="instructions">
+Click any song below to play it.
+</div>
 
-<audio controls>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+<audio id="player" controls>
+    Your browser does not support audio.
 </audio>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_1')">
+03. With or without U - Cellar 55
+</div>
+
+<div class="song" onclick="playSong(this,'https://www.dropbox.com/scl/fi/hyvotznyct4je6m7qh3al/Brandy-_-Monica-The-Boy-Is-Mine.mp3?rlkey=ftuci9w1lisl2cb4sklvler1b&st=xejk0bjw&raw=1')">
+Brandy & Monica - The Boy Is Mine
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_3')">
+Bruno Mars - I Just Might
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_4')">
+BTS - Butter
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_5')">
+CeCe Winans - Goodness of God
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_6')">
+Chris Brown - Residuals
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_7')">
+Forrest Frank - OKAY
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_8')">
+GIVĒON - Heartbreak Anniversary
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_9')">
+Harry Styles - American Girls
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_10')">
+Hearts2Hearts - Lemon Tang
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_11')">
+Keri Hilson - Pretty Girl Rock
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_12')">
+Maheva - Ne m'oublie pas
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_13')">
+Michelle Khare - Tell Me I Can't
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_14')">
+Post Malone & Swae Lee - Sunflower
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_15')">
+Song For Wemmbu - PLAYFUL MASSACRE
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_16')">
+Taylor Swift - Patient Zero
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_17')">
+TKANDZ - NOW OR NEVER
+</div>
+
+<div class="song" onclick="playSong(this,'DROPBOX_LINK_18')">
+Vance Joy - Riptide
+</div>
+
+<script>
+
+function playSong(element,url) {
+
+    let songs = document.querySelectorAll('.song');
+
+    songs.forEach(song => {
+        song.classList.remove('active');
+    });
+
+    element.classList.add('active');
+
+    const player = document.getElementById('player');
+
+    player.src = url;
+
+    player.play();
+}
+
+</script>
 
 </body>
 </html>
