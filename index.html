@@ -6,6 +6,7 @@
 <title>Portable 1 Music Playlist </title>
 
 <style>
+
 body {
     font-family: Arial, sans-serif;
     max-width: 900px;
@@ -43,6 +44,7 @@ audio {
     border-radius: 8px;
     border: 1px solid #ddd;
     cursor: pointer;
+    transition:0.2s;
 }
 
 .song:hover {
@@ -52,6 +54,7 @@ audio {
 .active {
     background: #cfe2ff;
     border-color: #4a90e2;
+    font-weight:bold;
 }
 
 .instructions {
@@ -72,8 +75,10 @@ audio {
 Click any song below to play it.
 </div>
 
-<audio id="player" controls>
-    Your browser does not support audio.
+<audio 
+    id="player" 
+    controls
+    preload="auto">    
 </audio>
 
 <div class="controls">
