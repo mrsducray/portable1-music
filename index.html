@@ -78,7 +78,7 @@ Click any song below to play it.
 <audio 
     id="player" 
     controls
-    preload="auto">    
+    preload="metadata">    
 </audio>
 
 <div class="controls">
@@ -176,47 +176,37 @@ const playlist = [
 "https://www.dropbox.com/scl/fi/0lqwhzlbnf3jvaxo2dscc/Vance-Joy-Riptide.mp3?rlkey=z142zp9xsi0e9tkt557l93mqn&st=h9qorm3r&raw=1",
     
 ];
-    
-let currentTrack = 0;
 
 const player = document.getElementById("player");
 const songs = document.querySelectorAll(".song");
 
+let currentTrack = 0;
+
 function highlightSong(index){
 
-    songs.forEach(song=>{
+    songs.forEach(song => {
         song.classList.remove("active");
     });
 
     songs[index].classList.add("active");
+}
 
-    songs[index].scrollIntoView({
-        behavior:"smooth",
-        block:"nearest"
-    });
+function loadSong(index){
+
+    currentTrack = index;
+
+    player.src = playlist[currentTrack];
+
+    highlightSong(currentTrack);
 }
 
 function playSong(index){
 
-    currentTrack = index;
+    loadSong(index);
 
-    player.pause();
-
-    player.src = playlist[currentTrack];
-
-    player.load();
-
-    highlightSong(currentTrack);
-
-    const playPromise = player.play();
-
-    if(playPromise !== undefined){
-
-        playPromise.catch(error=>{
-            console.log(error);
-        });
-
-    }
+    player.play().catch(error => {
+        console.log("Playback issue:", error);
+    });
 }
 
 function nextSong(){
@@ -224,7 +214,6 @@ function nextSong(){
     currentTrack++;
 
     if(currentTrack >= playlist.length){
-
         currentTrack = 0;
     }
 
@@ -236,32 +225,22 @@ function previousSong(){
     currentTrack--;
 
     if(currentTrack < 0){
-
         currentTrack = playlist.length - 1;
     }
 
     playSong(currentTrack);
 }
 
-player.addEventListener("ended", ()=>{
+player.addEventListener("ended", () => {
 
     nextSong();
 
 });
 
-player.addEventListener("error",(e)=>{
+window.addEventListener("load", () => {
 
-    console.log("Audio Error",e);
-
-});
-
-window.addEventListener("load",()=>{
-
-    highlightSong(0);
+    loadSong(0);
 
 });
 
 </script>
-
-</body>
-</html>
