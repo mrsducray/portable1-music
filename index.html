@@ -6,268 +6,179 @@
 <title>Playlist</title>
 
 <style>
-
-body{
+html, body {
+    height: 100vh;
+    overflow-y: auto; /* Enables internal scrolling inside Google Sites iframe */
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
     font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: 10px auto;
-    padding-top: 250px;
-    padding-left: 0;
-    padding-right: 0;
-    background:transparent;
 }
 
-h1{
-    text-align:center;
+/* Centers the playlist without adding extra side margins */
+.main-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 12px 40px 12px;
+    box-sizing: border-box;
 }
 
-#currentSong{
-    text-align:center;
-    color:#444;
+/* Transparent spacer to push Playlist below your Music Hub banner (adjust height as needed) */
+.top-spacer {
+    height: 220px;
+    width: 100%;
+    background: transparent;
 }
 
-audio{
-    width:100%;
-    margin-bottom:20px;
+h1 {
+    text-align: center;
+    margin-top: 0;
 }
 
-.controls{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-button{
-    padding:10px 20px;
-    margin:5px;
-    cursor:pointer;
-}
-
-.song{
-    background:white;
-    padding:12px;
-    margin:6px 0;
-    border-radius:8px;
-    border:1px solid #ddd;
-    cursor:pointer;
-}
-
-.player-container{
+.player-container {
     position: sticky;
     top: 0;
     z-index: 1000;
-
-    background: rgba(255,255,255,0.75);
-
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-
-    padding: 10px;
-
-    border-bottom: 1px solid #ddd;
-
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     margin-bottom: 20px;
 }
 
-#currentSong{
-    text-align:center;
-    color:#444;
-    margin-top:0;
-    margin-bottom:10px;
+#currentSong {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
-audio{
-    width:100%;
-    margin-bottom:10px;
+audio {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-.song:hover{
-    background:#e8f0fe;
+.controls {
+    text-align: center;
+    margin-bottom: 4px;
 }
 
-.active{
-    background:#cfe2ff;
-    border:2px solid #4285f4;
-    font-weight:bold;
+button {
+    padding: 8px 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
 }
 
+button:hover {
+    background: #f1f3f4;
+}
+
+.song {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.song:hover {
+    background: #e8f0fe;
+}
+
+.active {
+    background: #cfe2ff;
+    border: 2px solid #4285f4;
+    font-weight: bold;
+}
 </style>
 </head>
 
 <body>
 
-<h1>🎵 Playlist</h1>
+<div class="main-wrapper">
 
-<h3 id="currentSong">
-Track 1
-</h3>
+    <!-- Adjust height in .top-spacer CSS above to move Playlist up or down -->
+    <div class="top-spacer"></div>
 
-<div class="player-container">
+    <h1>🎵 Playlist</h1>
 
-    <h3 id="currentSong">
-        Track 1
-    </h3>
+    <div class="player-container">
 
-    <audio
-        id="player"
-        controls
-        controlsList="nodownload"
-        preload="metadata">
-    </audio>
+        <h3 id="currentSong">
+            Track 1
+        </h3>
 
-    <div class="controls">
+        <audio
+            id="player"
+            controls
+            controlsList="nodownload"
+            preload="metadata">
+        </audio>
 
-        <button onclick="previousSong()">
-            ⏮ Previous
-        </button>
-
-        <button onclick="shuffleSong()">
-            🔀 Shuffle
-        </button>
-
-        <button onclick="nextSong()">
-            ⏭ Next
-        </button>
+        <div class="controls">
+            <button onclick="previousSong()">⏮ Previous</button>
+            <button onclick="shuffleSong()">🔀 Shuffle</button>
+            <button onclick="nextSong()">⏭ Next</button>
+        </div>
 
     </div>
 
-</div>
+    <div class="song" onclick="playSong(0)">Brandy & Monica - The Boy Is Mine</div>
+    <div class="song" onclick="playSong(1)">Bruno Mars - I Just Might</div>
+    <div class="song" onclick="playSong(2)">BTS - Butter</div>
+    <div class="song" onclick="playSong(3)">CeCe Winans - Goodness of God</div>
+    <div class="song" onclick="playSong(4)">Chris Brown - Residuals</div>
+    <div class="song" onclick="playSong(5)">Forrest Frank - Okay</div>
+    <div class="song" onclick="playSong(6)">GIVĒON - Heartbreak Anniversary</div>
+    <div class="song" onclick="playSong(7)">Harry Styles - American Girls</div>
+    <div class="song" onclick="playSong(8)">Hearts2Hearts - Lemon Tang</div>
+    <div class="song" onclick="playSong(9)">Keri Hilson - Pretty Girl Rock</div>
+    <div class="song" onclick="playSong(10)">Maheva - Ne m'oublie pas</div>
+    <div class="song" onclick="playSong(11)">Michelle Khare - Tell Me I Can't</div>
+    <div class="song" onclick="playSong(12)">Post Malone & Swae Lee - Sunflower</div>
+    <div class="song" onclick="playSong(13)">Song For Wemmbu - Playful massacre</div>
+    <div class="song" onclick="playSong(14)">Taylor Swift - Patient Zero</div>
+    <div class="song" onclick="playSong(15)">TKANDZ - Now or never</div>
+    <div class="song" onclick="playSong(16)">Vance Joy - Riptide</div>
+    <div class="song" onclick="playSong(17)">AC_DC - Back In Black</div>
+    <div class="song" onclick="playSong(18)">AC_DC - Thunderstruck</div>
+    <div class="song" onclick="playSong(19)">Gunnr - Are you listening</div>
+    <div class="song" onclick="playSong(20)">Katy Perry - Firework</div>
+    <div class="song" onclick="playSong(21)">The Quireboys - 7 O'Clock</div>
 
-<div class="song" onclick="playSong(0)">
-Brandy & Monica - The Boy Is Mine
-</div>
-
-<div class="song" onclick="playSong(1)">
-Bruno Mars - I Just Might
-</div>
-
-<div class="song" onclick="playSong(2)">
-BTS - Butter
-</div>
-
-<div class="song" onclick="playSong(3)">
-CeCe Winans - Goodness of God
-</div>
-
-<div class="song" onclick="playSong(4)">
-Chris Brown - Residuals
-</div>
-
-<div class="song" onclick="playSong(5)">
-Forrest Frank - Okay
-</div>
-
-<div class="song" onclick="playSong(6)">
-GIVĒON - Heartbreak Anniversary
-</div>
-
-<div class="song" onclick="playSong(7)">
-Harry Styles - American Girls
-</div>
-
-<div class="song" onclick="playSong(8)">
-Hearts2Hearts - Lemon Tang
-</div>
-
-<div class="song" onclick="playSong(9)">
-Keri Hilson - Pretty Girl Rock
-</div>
-
-<div class="song" onclick="playSong(10)">
-Maheva - Ne m'oublie pas
-</div>
-
-<div class="song" onclick="playSong(11)">
-Michelle Khare - Tell Me I Can't
-</div>
-
-<div class="song" onclick="playSong(12)">
-Post Malone & Swae Lee - Sunflower
-</div>
-
-<div class="song" onclick="playSong(13)">
-Song For Wemmbu - Playful massacre
-</div>
-
-<div class="song" onclick="playSong(14)">
-Taylor Swift - Patient Zero
-</div>
-
-<div class="song" onclick="playSong(15)">
-TKANDZ - Now or never
-</div>
-
-<div class="song" onclick="playSong(16)">
-Vance Joy - Riptide
-</div>
-
-<div class="song" onclick="playSong(17)">
-AC_DC - Back In Black
-</div>
-
-<div class="song" onclick="playSong(18)">
-AC_DC - Thunderstruck
-</div>
-
-<div class="song" onclick="playSong(19)">
-Gunnr - Are you listening
-</div>
-
-<div class="song" onclick="playSong(20)">
-Katy Perry - Firework
-</div>
-
-<div class="song" onclick="playSong(21)">
-The Quireboys - 7 O'Clock
 </div>
 
 <script>
-
 const playlist = [
-
 "https://www.dropbox.com/scl/fi/hyvotznyct4je6m7qh3al/Brandy-_-Monica-The-Boy-Is-Mine.mp3?rlkey=ftuci9w1lisl2cb4sklvler1b&st=xejk0bjw&raw=1",
-
 "https://www.dropbox.com/scl/fi/gpgkyj5t5cyvdg69ybig6/Bruno-Mars-I-Just-Might.mp3?rlkey=j97rnpam3y7kt3oafp99hqpbl&st=lpo5p01k&raw=1",
-
 "https://www.dropbox.com/scl/fi/fqk9e5rgmv8qfo3dwnk97/BTS-Butter.mp3?rlkey=wtl0bcq5qwdos761s4dtf2e6i&st=dn5xbjyb&raw=1",
-
 "https://www.dropbox.com/scl/fi/ci4hb2nmg6bk47wn19nuw/CeCe-Winans-Goodness-of-God.mp3?rlkey=a59spnkg46ovnaxv19wivjk64&st=3rxc4tic&raw=1",
-
 "https://www.dropbox.com/scl/fi/xr42ges7evs3o3xhsthhd/Chris-Brown-Residuals-Official-Video.mp3?rlkey=uncukeyobabhxw1pmtzai7bn9&st=y4kdtq09&raw=1",
-
 "https://www.dropbox.com/scl/fi/kyzsw83je4p0aol0fjc71/Forrest-Frank-OKAY.mp3?rlkey=3bfs4zkhwmhuby777zj5fsxma&st=yokxhorx&raw=1",
-
 "https://www.dropbox.com/scl/fi/jvq96jw4l78fvqdzfqpy8/GIV-ON-Heartbreak-Anniversary.mp3?rlkey=uvl6la1cnhrc12c4wczvs8yso&st=z84y7nc2&raw=1",
-
 "https://www.dropbox.com/scl/fi/h0tltqxb0xzm5zuh26829/Harry-Styles-American-Girls.mp3?rlkey=js1yh5ztjh3k8dn8fwr75gkrk&st=v816xtkc&raw=1",
-
 "https://www.dropbox.com/scl/fi/fmlwg997y9fmw1ls7266y/Hearts2Hearts-Lemon-Tang.mp3?rlkey=au1cx3vgxk99zabvx17qiac20&st=6khg3cx9&raw=1",
-
 "https://www.dropbox.com/scl/fi/anngwj995jnsjr43vq9m2/Keri-Hilson-Pretty-Girl-Rock.mp3?rlkey=p0w2q4zpuo452m93r4on2corh&st=g0w4yep2&raw=1",
-
 "https://www.dropbox.com/scl/fi/omadxcsbrowmy9jdec3lq/Maheva-Ne-m-oublie-pas.mp3?rlkey=3mdcfkdavigfrn5rzftj8481h&st=1z8867ul&raw=1",
-
 "https://www.dropbox.com/scl/fi/z0nvl5z3cmbue3nzkvsaa/Michelle-Khare-Tell-Me-I-Can-t.mp3?rlkey=tu0zehc09hu9dhua1ogmwsegd&st=nlx6r2tm&raw=1",
-
 "https://www.dropbox.com/scl/fi/v4vi5e660rlz3b4spp4gq/Post-Malone-_-Swae-Lee-Sunflower.mp3?rlkey=nf55wr6uek4qxx80mx52eeiai&st=qxdc121y&raw=1",
-
 "https://www.dropbox.com/scl/fi/oibsc0386xakq0xawzbd6/Song-For-Wemmbu-PLAYFUL-MASSACRE.mp3?rlkey=i18fti4t5cqujg1ems5so4to4&st=549c9oav&raw=1",
-
 "https://www.dropbox.com/scl/fi/7baarcs1w6cxczj0jb17i/Taylor-Swift-Patient-Zero.mp3?rlkey=e2jf6bx0iomg9sjswlwm8y0oa&st=v3ak2uep&raw=1",
-
 "https://www.dropbox.com/scl/fi/p64236tc5shsni43xov5g/TKANDZ-NOW-OR-NEVER.mp3?rlkey=ghoxz5bywvcb0w9dr7gq90jtj&st=19qihw6y&raw=1",
-
 "https://www.dropbox.com/scl/fi/0lqwhzlbnf3jvaxo2dscc/Vance-Joy-Riptide.mp3?rlkey=z142zp9xsi0e9tkt557l93mqn&st=h9qorm3r&raw=1",
-
 "https://www.dropbox.com/scl/fi/3951iwk6093xwdf28wtkx/AC_DC-Back-In-Black.mp3?rlkey=g8fujn39q3alc7bowr27n7hws&st=pomeyrkb&raw=1",
-
 "https://www.dropbox.com/scl/fi/luc0zfyqe4yog1f8a58c3/AC_DC-Thunderstruck.mp3?rlkey=4xzbb9mrwah5g03jxzsk48vyx&st=t64bkpyp&raw=1",
-    
 "https://www.dropbox.com/scl/fi/000dovoj2eregaey46cva/Gunnr-Are-you-listening.mp3?rlkey=v01fione28kkpyyn0hdecroqg&st=f6vu162m&raw=1",
-    
 "https://www.dropbox.com/scl/fi/kj7t6ld3ypuo4hhfu96fa/Katy-Perry-Firework.mp3?rlkey=b9a2ogjc1jieu8cxscyjg15b6&st=0ai27u9a&raw=1",
-    
 "https://www.dropbox.com/scl/fi/squzs6wyyf3s6aa1ijeia/The-Quireboys-7-O-Clock.mp3?rlkey=v8qr034o3lmp4wtaacrmb4jkd&st=4m0alc7c&raw=1"
-
 ];
 
 const player = document.getElementById("player");
@@ -275,100 +186,65 @@ const songs = document.querySelectorAll(".song");
 
 let currentTrack = 0;
 
-player.volume =
-    localStorage.getItem("playerVolume") || 0.5;
+player.volume = localStorage.getItem("playerVolume") || 0.5;
 
-player.addEventListener("volumechange",()=>{
-
-    localStorage.setItem(
-        "playerVolume",
-        player.volume
-    );
-
+player.addEventListener("volumechange", () => {
+    localStorage.setItem("playerVolume", player.volume);
 });
 
-function highlightSong(index){
-
-    songs.forEach(song=>{
+function highlightSong(index) {
+    songs.forEach(song => {
         song.classList.remove("active");
     });
 
     songs[index].classList.add("active");
 
-    document.getElementById("currentSong")
-    .textContent =
-    `Track ${index + 1} of ${songs.length}: ` +
-    songs[index].textContent;
+    document.getElementById("currentSong").textContent =
+        `Track ${index + 1} of ${songs.length}: ` + songs[index].textContent;
 }
 
-function playSong(index){
-
+function playSong(index) {
     currentTrack = index;
-
     player.pause();
-
     player.src = playlist[index];
-
     player.load();
-
     highlightSong(index);
-
-    player.play()
-    .catch(err=>console.log(err));
+    player.play().catch(err => console.log(err));
 }
 
-function nextSong(){
-
+function nextSong() {
     currentTrack++;
-
-    if(currentTrack >= playlist.length){
+    if (currentTrack >= playlist.length) {
         currentTrack = 0;
     }
-
     playSong(currentTrack);
 }
 
-function previousSong(){
-
+function previousSong() {
     currentTrack--;
-
-    if(currentTrack < 0){
+    if (currentTrack < 0) {
         currentTrack = playlist.length - 1;
     }
-
     playSong(currentTrack);
 }
 
-function shuffleSong(){
-
+function shuffleSong() {
     let randomTrack;
-
-    do{
-
-        randomTrack =
-            Math.floor(
-                Math.random()*playlist.length
-            );
-
-    } while(randomTrack === currentTrack);
+    do {
+        randomTrack = Math.floor(Math.random() * playlist.length);
+    } while (randomTrack === currentTrack);
 
     playSong(randomTrack);
 }
 
-player.addEventListener("ended",()=>{
-
+player.addEventListener("ended", () => {
     nextSong();
-
 });
 
-window.addEventListener("load",()=>{
-
+window.addEventListener("load", () => {
     player.src = playlist[0];
-
     highlightSong(0);
-
 });
-
 </script>
 
 </body>
