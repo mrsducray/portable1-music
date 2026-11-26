@@ -7,53 +7,40 @@
 
 <style>
 html, body {
-    height: 100vh;
-    overflow-y: auto; /* Enables internal scrolling inside Google Sites iframe */
     margin: 0;
     padding: 0;
     background: transparent !important;
     font-family: Arial, sans-serif;
 }
 
-/* Centers the playlist without adding extra side margins */
 .main-wrapper {
-    max-width: 1000px;
-    margin: 10px auto;
-    padding: 0;
+    max-width: 750px;
+    margin: 16px auto;
+    padding: 0 12px 20px 12px;
     box-sizing: border-box;
-}
-
-/* Transparent spacer to push Playlist below your Music Hub banner (adjust height as needed) */
-.top-spacer {
-    height: 600px;
-    width: 100%;
-    background: transparent;
 }
 
 h1 {
     text-align: center;
-    margin-top: 0;
+    margin: 0 0 14px 0;
 }
 
+/* Player stays fixed right above the scrollable song list */
 .player-container {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     padding: 12px;
     border-radius: 12px;
     border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 12px;
 }
 
 #currentSong {
     text-align: center;
     color: #333;
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 audio {
@@ -79,8 +66,15 @@ button:hover {
     background: #f1f3f4;
 }
 
+/* Scrollable window for the 22 songs */
+.song-list {
+    max-height: 400px; /* Adjust this height to show more or fewer songs at once */
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
 .song {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     padding: 12px;
     margin: 6px 0;
     border-radius: 8px;
@@ -104,54 +98,42 @@ button:hover {
 
 <div class="main-wrapper">
 
-    <!-- Adjust height in .top-spacer CSS above to move Playlist up or down -->
-    <div class="top-spacer"></div>
-
     <h1>🎵 Playlist</h1>
 
     <div class="player-container">
-
-        <h3 id="currentSong">
-            Track 1
-        </h3>
-
-        <audio
-            id="player"
-            controls
-            controlsList="nodownload"
-            preload="metadata">
-        </audio>
-
+        <h3 id="currentSong">Track 1</h3>
+        <audio id="player" controls controlsList="nodownload" preload="metadata"></audio>
         <div class="controls">
             <button onclick="previousSong()">⏮ Previous</button>
             <button onclick="shuffleSong()">🔀 Shuffle</button>
             <button onclick="nextSong()">⏭ Next</button>
         </div>
-
     </div>
 
-    <div class="song" onclick="playSong(0)">Brandy & Monica - The Boy Is Mine</div>
-    <div class="song" onclick="playSong(1)">Bruno Mars - I Just Might</div>
-    <div class="song" onclick="playSong(2)">BTS - Butter</div>
-    <div class="song" onclick="playSong(3)">CeCe Winans - Goodness of God</div>
-    <div class="song" onclick="playSong(4)">Chris Brown - Residuals</div>
-    <div class="song" onclick="playSong(5)">Forrest Frank - Okay</div>
-    <div class="song" onclick="playSong(6)">GIVĒON - Heartbreak Anniversary</div>
-    <div class="song" onclick="playSong(7)">Harry Styles - American Girls</div>
-    <div class="song" onclick="playSong(8)">Hearts2Hearts - Lemon Tang</div>
-    <div class="song" onclick="playSong(9)">Keri Hilson - Pretty Girl Rock</div>
-    <div class="song" onclick="playSong(10)">Maheva - Ne m'oublie pas</div>
-    <div class="song" onclick="playSong(11)">Michelle Khare - Tell Me I Can't</div>
-    <div class="song" onclick="playSong(12)">Post Malone & Swae Lee - Sunflower</div>
-    <div class="song" onclick="playSong(13)">Song For Wemmbu - Playful massacre</div>
-    <div class="song" onclick="playSong(14)">Taylor Swift - Patient Zero</div>
-    <div class="song" onclick="playSong(15)">TKANDZ - Now or never</div>
-    <div class="song" onclick="playSong(16)">Vance Joy - Riptide</div>
-    <div class="song" onclick="playSong(17)">AC_DC - Back In Black</div>
-    <div class="song" onclick="playSong(18)">AC_DC - Thunderstruck</div>
-    <div class="song" onclick="playSong(19)">Gunnr - Are you listening</div>
-    <div class="song" onclick="playSong(20)">Katy Perry - Firework</div>
-    <div class="song" onclick="playSong(21)">The Quireboys - 7 O'Clock</div>
+    <div class="song-list">
+        <div class="song" onclick="playSong(0)">Brandy & Monica - The Boy Is Mine</div>
+        <div class="song" onclick="playSong(1)">Bruno Mars - I Just Might</div>
+        <div class="song" onclick="playSong(2)">BTS - Butter</div>
+        <div class="song" onclick="playSong(3)">CeCe Winans - Goodness of God</div>
+        <div class="song" onclick="playSong(4)">Chris Brown - Residuals</div>
+        <div class="song" onclick="playSong(5)">Forrest Frank - Okay</div>
+        <div class="song" onclick="playSong(6)">GIVĒON - Heartbreak Anniversary</div>
+        <div class="song" onclick="playSong(7)">Harry Styles - American Girls</div>
+        <div class="song" onclick="playSong(8)">Hearts2Hearts - Lemon Tang</div>
+        <div class="song" onclick="playSong(9)">Keri Hilson - Pretty Girl Rock</div>
+        <div class="song" onclick="playSong(10)">Maheva - Ne m'oublie pas</div>
+        <div class="song" onclick="playSong(11)">Michelle Khare - Tell Me I Can't</div>
+        <div class="song" onclick="playSong(12)">Post Malone & Swae Lee - Sunflower</div>
+        <div class="song" onclick="playSong(13)">Song For Wemmbu - Playful massacre</div>
+        <div class="song" onclick="playSong(14)">Taylor Swift - Patient Zero</div>
+        <div class="song" onclick="playSong(15)">TKANDZ - Now or never</div>
+        <div class="song" onclick="playSong(16)">Vance Joy - Riptide</div>
+        <div class="song" onclick="playSong(17)">AC_DC - Back In Black</div>
+        <div class="song" onclick="playSong(18)">AC_DC - Thunderstruck</div>
+        <div class="song" onclick="playSong(19)">Gunnr - Are you listening</div>
+        <div class="song" onclick="playSong(20)">Katy Perry - Firework</div>
+        <div class="song" onclick="playSong(21)">The Quireboys - 7 O'Clock</div>
+    </div>
 
 </div>
 
